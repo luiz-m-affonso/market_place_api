@@ -4,19 +4,20 @@ class Api::V1::ProductsController < ApplicationController
   before_action :set_product, only: %i[show update destroy]
 
   def show
-    render json: Product.find(params[:id])
+    render json: ProductSerializer.new(@product).serializable_hash
   end
 
   def index
-    render json: Product.all
+    @products = Product.order(created_at: :desc)
+    render json: ProductSerializer.new(@products).serializable_hash
   end
 
   def create
-    product = current_user.products.build(product_params)
-    if product.save
-      render json: product, status: :created
+    @product = current_user.products.build(product_params)
+    if @product.save
+      render json: ProductSerializer.new(@products).serializable_hash, status: :created
     else
-      render json: { errors: product.errors }, status: :unprocessable_entity
+      render json: { errors: @product.errors }, status: :unprocessable_entity
     end
   end
 

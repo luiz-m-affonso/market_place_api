@@ -45,3 +45,5 @@ gem 'jwt'
 
 
 gem "faker", "~> 2.18"
+
+gem "jsonapi-serializer", "~> 2.2"

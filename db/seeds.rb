@@ -2,7 +2,7 @@ Product.delete_all
 User.delete_all
 
 3.times do
-  user = User.create! email: Fkaer::Internet.email, password: '123456'
+  user = User.create! email: Faker::Internet.email, password: '123456'
   puts "Created a new user: #{user.email}"
 
   2.times do
