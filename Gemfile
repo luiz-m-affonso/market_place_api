@@ -43,3 +43,5 @@ gem "bcrypt", "~> 3.1"
 
 gem 'jwt'
 
+
+gem "faker", "~> 2.18"
